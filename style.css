@@ -5,12 +5,15 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 10px; /* Added padding for a little space on smaller screens */
 }
 
 #input-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%; /* Ensure the form uses available width */
+    max-width: 500px; /* Limit form width on larger screens */
 }
 
 input, textarea, button {
@@ -18,6 +21,8 @@ input, textarea, button {
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    width: 100%; /* Ensure inputs take full width of the form */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 button {
@@ -28,4 +33,17 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+/* Media query for devices with a width of up to 768 pixels */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto; /* Allow the body to grow taller than the viewport */
+    }
+
+    #input-form {
+        margin-top: 20px; /* Add some space at the top on smaller screens */
+    }
 }
