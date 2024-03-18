@@ -5,14 +5,14 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    padding: 10px; /* Added padding for a little space on smaller screens */
+    padding: 10px; /* Ensure there's padding around the content */
 }
 
 #input-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 100%; /* Ensure the form uses available width */
+    width: calc(100% - 20px); /* Adjust width to account for padding */
     max-width: 500px; /* Limit form width on larger screens */
 }
 
@@ -41,9 +41,10 @@ button:hover {
         flex-direction: column;
         justify-content: flex-start;
         height: auto; /* Allow the body to grow taller than the viewport */
+        padding: 20px; /* Increase padding for smaller screens */
     }
 
     #input-form {
-        margin-top: 20px; /* Add some space at the top on smaller screens */
+        width: calc(100% - 40px); /* Adjust form width to ensure padding does not make it too wide */
     }
 }
