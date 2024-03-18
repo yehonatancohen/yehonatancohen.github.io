@@ -75,3 +75,16 @@ document.getElementById('generate-csv').addEventListener('click', function() {
         document.body.removeChild(link);
     }
 });
+
+document.getElementById('help-btn').addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent click from propagating to the document
+    const helpBox = document.getElementById('help-box');
+    helpBox.classList.toggle('hidden');
+});
+
+document.addEventListener('click', function() {
+    const helpBox = document.getElementById('help-box');
+    if (!helpBox.classList.contains('hidden')) {
+        helpBox.classList.add('hidden');
+    }
+});

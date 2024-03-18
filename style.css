@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -17,6 +18,7 @@ body {
 }
 
 input, textarea, button {
+    font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
@@ -47,4 +49,35 @@ button:hover {
     #input-form {
         width: calc(100% - 40px); /* Adjust form width to ensure padding does not make it too wide */
     }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px; /* Adjust spacing between the header and the form */
+}
+
+.hidden {
+    display: none;
+}
+
+#help-box {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 40px;
+    width: 600px; /* Adjust based on your content */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 100; /* Ensure it's above other content */
+}
+
+/* Adjust the media query if needed for better mobile display */
+@media (max-width: 768px) {
+    #help-box {
+        width: calc(100% - 100px); /* Make it responsive */
+    }
+}
+
+h2 {
+    text-align: center;
 }

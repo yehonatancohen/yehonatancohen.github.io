@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Generator</title>
+    <title>אשף קבצים</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+    <header>
+        <h1>אשף קבצים</h1>
+        <button id="help-btn" aria-label="Help"><i class="fas fa-question"></i></button>
+    </header>
+    <div id="help-box" class="hidden">
+        <h2>הסבר</h2>
+        <p>האתר הזה נועד למנוע חפירות של יהב לוי וליצור אוטומציה של מטלה פשוטה.<br> כדי להכניס את מספרי הטלפון לאנשי קשר יש צורך להעלות אותם לאתר Google Contacts</p>
+        <p>Google Contacts מקבל את המספרי טלפון בפורמט ספציפי, ומה שקרה עד עכשיו זה שיהב לוי עשה את זה ידנית (חבל)</p>
+        <p>באתר הזה, כל מה שצריך זה להכניס את הנתונים כמו שרוצים והאתר ייצור קובץ בפורמט הנכון.</p>
+        <p>הקדמה לשם - כששומרים את האנשי קשר צריך שיהיה להם שם, השם מורכב מהקדמה וממספר. בעמודה הזו שמים את ההקדמה</p>
+        <p>כמות חלוקה - כשמוסיפים את האנשי קשר רוצים לצרף בקבוצות (אי אפשר לצרף את כולם בבת אחת אחרת תחסמו), אז כדי לשזה יהיה נוח כל פעם מוסיפים את מספר 26, אז אם אני רוצה כל פעם לצרף קבוצה של 50, יהיו 50 אנשים עם אותו שם ואני אוסיף כל פעם את המספר המתאים בבת אחת (מעל 50 זה סיכון לחסימה)</p>
+        <p>מספרי טלפון - יש שתי אופציות להכניס את מספרי הטלפון שרוצים לשמור, או בתיבת טקסט, שם צריך להכניס את מספרי הטלפון עם פסיק בין מספר למספר. <br>אופציה שנייה זה להעלות קובץ (אקסל, או קבצים דומים) שבתוכו יש מספרי טלפון, האתר יזהה לבד את המספרים אין צורך בפורמט מיוחד.</p>
+        <p>לכל בעיה או הצעה - 058-6181898</p>
+    </div>
     <div id="input-form">
-        <input type="text" id="prefix" placeholder="Prefix" />
-        <input type="number" id="amount" placeholder="Amount" />
-        <textarea id="phone-numbers" placeholder="Enter phone numbers separated by commas"></textarea>
+        <input type="text" id="prefix" placeholder="הקדמה לשם (ברירת מחדל P)" />
+        <input type="number" id="amount" placeholder="כמות חלוקה (ברירת מחדל 50)" />
+        <textarea id="phone-numbers" placeholder="מספרי טלפון עם פסיק בניהם"></textarea>
         <input type="file" id="file-input" accept=".csv, .txt, .xls, .xlsx" />
-        <button id="generate-csv">Generate CSV</button>
+        <button id="generate-csv">צור קובץ</button>
     </div>
     <script src="script.js"></script>
 </body>
