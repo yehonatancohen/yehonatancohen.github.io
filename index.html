@@ -26,9 +26,14 @@
         <input type="text" id="prefix" placeholder="הקדמה לשם (ברירת מחדל P)" />
         <input type="number" id="amount" placeholder="כמות חלוקה (ברירת מחדל 50)" />
         <textarea id="phone-numbers" placeholder="מספרי טלפון עם פסיק בניהם"></textarea>
-        <input type="file" id="file-input" accept=".csv, .txt, .xls, .xlsx" />
+        <input type="file" id="file-input" accept=".csv, .txt, .xls, .xlsx" multiple/>
         <button id="generate-csv">צור קובץ</button>
     </div>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+
+    <footer>
+        <p>פותח על ידי יהונתן כהן</p>
 </body>
 </html>
