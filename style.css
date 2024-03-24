@@ -81,3 +81,17 @@ header {
 h2 {
     text-align: center;
 }
+
+.tos-agreement {
+    display: flex;
+    margin-top: 20px;
+}
+
+.tos-agreement a {
+    color: #007bff; /* Example color; adjust as needed */
+    text-decoration: none;
+}
+
+.tos-agreement a:hover {
+    text-decoration: underline;
+}

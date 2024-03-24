@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+</head>
+<body>
+    <h1>Webhook Caller Page</h1>
+    <input type="text" id="tokenInput" placeholder="Enter your token here" />
+    <button id="callWebhookBtn">Call Webhook</button>
+
+    <script>
+        document.getElementById('callWebhookBtn').addEventListener('click', function() {
+            const token = document.getElementById('tokenInput').value;
+            if(token) {
+                callWebhook(token);
+            } else {
+                alert('Please enter a token');
+            }
+        });
+
+        async function callWebhook(token) {
+            const webhookUrl = 'YOUR_WEBHOOK_URL_HERE'; // Replace with your actual webhook URL
+            const action = 'testAction';
+            const parameter = 'testParameter';
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action,
+                        parameter,
+                        token,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('Response from webhook:', data);
+            } catch (error) {
+                console.error('Error calling the webhook:', error);
+            }
+        }
+    </script>
+</body>
+</html>

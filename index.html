@@ -12,6 +12,7 @@
         <h1>אשף קבצים</h1>
         <button id="help-btn" aria-label="Help"><i class="fas fa-question"></i></button>
     </header>
+    <p><a href="webhook.html">Go to the Second Page</a></p>
     <div id="help-box" class="hidden">
         <h2>הסבר</h2>
         <p>האתר הזה נועד למנוע חפירות של יהב לוי וליצור אוטומציה של מטלה פשוטה.<br> כדי להכניס את מספרי הטלפון לאנשי קשר יש צורך להעלות אותם לאתר Google Contacts</p>
@@ -27,6 +28,10 @@
         <input type="number" id="amount" placeholder="כמות חלוקה (ברירת מחדל 50)" />
         <textarea id="phone-numbers" placeholder="מספרי טלפון עם פסיק בניהם"></textarea>
         <input type="file" id="file-input" accept=".csv, .txt, .xls, .xlsx" multiple/>
+        <label class="tos-agreement" style="display: inline;">
+            <input type="checkbox" id="agree-tos" name="agree-tos">
+            <label for="agree-tos" style="display: inline;">אני מסכים ל <a href="URL_TO_TOS" target="_blank">תנאי השימוש</a>.</label>
+        </label>
         <button id="generate-csv">צור קובץ</button>
     </div>
     <script src="script.js"></script>
