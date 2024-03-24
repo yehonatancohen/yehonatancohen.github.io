@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Second Page</title>
+    <title>Dynamic Webhook Caller</title>
 </head>
 <body>
-    <h1>Webhook Caller Page</h1>
-    <input type="text" id="tokenInput" placeholder="Enter your token here" />
+    <h1>Dynamic Webhook Caller</h1>
+    <input type="text" id="webhookUrl" placeholder="Webhook URL" /><br>
+    <input type="text" id="tokenInput" placeholder="Token" /><br>
+    <input type="text" id="actionInput" placeholder="Action" /><br>
+    <input type="text" id="parameterInput" placeholder="Parameter" /><br>
     <button id="callWebhookBtn">Call Webhook</button>
 
     <script>
         document.getElementById('callWebhookBtn').addEventListener('click', function() {
-            const token = document.getElementById('tokenInput').value;
-            if(token) {
-                callWebhook(token);
-            } else {
-                alert('Please enter a token');
+            const webhookUrl = document.getElementById('webhookUrl').value.trim();
+            const token = document.getElementById('tokenInput').value.trim();
+            const action = document.getElementById('actionInput').value.trim();
+            const parameter = document.getElementById('parameterInput').value.trim();
+
+            if(!webhookUrl || !token || !action || !parameter) {
+                alert('Please fill in all fields');
+                return;
             }
+
+            callWebhook(webhookUrl, token, action, parameter);
         });
 
-        async function callWebhook(token) {
-            const webhookUrl = 'YOUR_WEBHOOK_URL_HERE'; // Replace with your actual webhook URL
-            const action = 'testAction';
-            const parameter = 'testParameter';
-
+        async function callWebhook(webhookUrl, token, action, parameter) {
             try {
                 const response = await fetch(webhookUrl, {
                     method: 'POST',
@@ -32,9 +36,9 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        token,
                         action,
                         parameter,
-                        token,
                     }),
                 });
 
@@ -44,8 +48,10 @@
 
                 const data = await response.json();
                 console.log('Response from webhook:', data);
+                alert('Webhook called successfully.');
             } catch (error) {
                 console.error('Error calling the webhook:', error);
+                alert('Error calling the webhook. Check the console for more details.');
             }
         }
     </script>
