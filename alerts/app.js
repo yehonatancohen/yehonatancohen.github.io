@@ -16,6 +16,23 @@ async function loadData() {
     alertsData = await alertsResponse.json();
     
     console.log('Data loaded successfully');
+    await fetchAlerts();
+    setInterval(fetchAlerts, 1000);
+}
+
+async function fetchAlerts() {
+    const response = await fetch('https://www.oref.org.il/WarningMessages/alert/alerts.json?v=1', {
+        headers: {
+            'Referer': 'https://www.oref.org.il//12481-he/Pakar.aspx',
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    });
+
+    const newAlerts = await response.json();
+    newAlerts.forEach(alert => {
+        alertsData[alert.rid] = alert;
+    });
+
     processAlerts();
 }
 
@@ -90,7 +107,7 @@ function addCityMarker(city) {
 function processAlerts() {
     const cityAlerts = {};
 
-    alertsData.forEach(alert => {
+    Object.values(alertsData).forEach(alert => {
         if (!cityAlerts[alert.data]) {
             cityAlerts[alert.data] = [];
         }
