@@ -21,22 +21,23 @@ async function loadData() {
 }
 
 async function fetchAlerts() {
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const targetUrl = 'https://www.oref.org.il/WarningMessages/alert/alerts.json?v=1';
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = async function () {
+        if (this.readyState != 4) return;
     
-    const response = await fetch(proxyUrl + targetUrl, {
-        headers: {
-            'Referer': 'https://www.oref.org.il//12481-he/Pakar.aspx',
-            'X-Requested-With': 'XMLHttpRequest'
+        if (this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            const newAlerts = await response.json();
+            newAlerts.forEach(alert => {
+                alertsData[alert.rid] = alert;
+            });
+
+            processAlerts();
         }
-    });
-
-    const newAlerts = await response.json();
-    newAlerts.forEach(alert => {
-        alertsData[alert.rid] = alert;
-    });
-
-    processAlerts();
+    };
+    
+    xhr.open('GET', 'https://www.oref.org.il/WarningMessages/alert/alerts.json?v=1', true);
+    xhr.send(); 
 }
 
 class City {
