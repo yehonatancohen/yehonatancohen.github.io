@@ -6,6 +6,21 @@
     <title>אשף קבצים</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .tos-agreement {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .tos-agreement input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .tos-agreement span {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,9 +42,9 @@
         <input type="number" id="amount" placeholder="כמות חלוקה (ברירת מחדל 50)" />
         <textarea id="phone-numbers" placeholder="מספרי טלפון עם פסיק בניהם"></textarea>
         <input type="file" id="file-input" accept=".csv, .txt, .xls, .xlsx" multiple/>
-        <label class="tos-agreement" style="display: inline;">
-            <input type="checkbox" id="agree-tos" name="agree-tos">
-            <label for="agree-tos" style="display: inline;">אני מסכים ל <a href="URL_TO_TOS" target="_blank">תנאי השימוש</a>.</label>
+        <label class="tos-agreement">
+            <input type="checkbox" id="agree-tos" name="agree-tos"><span>אני מסכים ל <a href="../tos.html" target="_blank">תנאי השימוש</a>.</span>
+            
         </label>
         <button id="generate-csv">צור קובץ</button>
     </div>
