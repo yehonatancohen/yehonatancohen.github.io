@@ -16,30 +16,23 @@ async function loadData() {
     alertsData = await alertsResponse.json();
     
     console.log('Data loaded successfully');
-    await fetchAlerts();
-    setInterval(fetchAlerts, 1000);
+    processAlerts();
+    //await fetchAlerts();
+    //setInterval(fetchAlerts, 1000);
 }
 
 async function fetchAlerts() {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = async function () {
-        if (this.readyState != 4) return;
+    const proxyUrl = 'https://api-virid-alpha.vercel.app/api/proxy'; 
     
-        if (this.status == 200) {
-            var response = JSON.parse(this.responseText);
-            const newAlerts = await response.json();
-            newAlerts.forEach(alert => {
-                alertsData[alert.rid] = alert;
-            });
+    const response = await fetch(proxyUrl);
+    const newAlerts = await response.json();
+    
+    newAlerts.forEach(alert => {
+        alertsData[alert.rid] = alert;
+    });
 
-            processAlerts();
-        }
-    };
-    
-    xhr.open('GET', 'https://www.oref.org.il/WarningMessages/alert/alerts.json?v=1', true);
-    xhr.send(); 
+    processAlerts();
 }
-
 class City {
     constructor(cityValue) {
         var item = CITIES_JSON["cities"][cityValue];
