@@ -21,7 +21,10 @@ async function loadData() {
 }
 
 async function fetchAlerts() {
-    const response = await fetch('https://www.oref.org.il/WarningMessages/alert/alerts.json?v=1', {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const targetUrl = 'https://www.oref.org.il/WarningMessages/alert/alerts.json?v=1';
+    
+    const response = await fetch(proxyUrl + targetUrl, {
         headers: {
             'Referer': 'https://www.oref.org.il//12481-he/Pakar.aspx',
             'X-Requested-With': 'XMLHttpRequest'
