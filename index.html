@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YEHONATAN COHEN</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .starfield {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            background: black;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            animation: moveStar linear infinite;
+        }
+        model-viewer {
+            width: 500px;
+            height: 500px;
+        }
+        @keyframes moveStar {
+            from {
+                transform: translateY(0) translateX(0);
+            }
+            to {
+                transform: translateY(100vh) translateX(100vw);
+            }
+        }
+        @keyframes rotateAstronaut {
+            0% { transform: rotateY(var(--rotate-y)) rotateX(var(--rotate-x)) rotateZ(var(--rotate-z)); }
+            100% { transform: rotateY(calc(var(--rotate-y) + 360deg)) rotateX(calc(var(--rotate-x) + 360deg)) rotateZ(calc(var(--rotate-z) + 360deg)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="starfield"></div>
+    <model-viewer id="ast" disable-zoom src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
+        alt="AST" 
+        auto-rotate
+        shadow-intensity="1"
+        camera-controls>
+    </model-viewer>
+    <script>
+        const starfield = document.querySelector('.starfield');
+        const stars = 200;
+
+        for (let i = 0; i < stars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            star.style.animationDelay = `${Math.random() * 10}s`;
+            starfield.appendChild(star);
+        }
+    </script>
+</body>
+</html>
