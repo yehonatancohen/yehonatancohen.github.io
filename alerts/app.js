@@ -5,6 +5,8 @@ var markersAndPolygons = {};
 var selectionCitiesIDs = [];
 var alertsData = {};
 
+document.getElementById('close-button')?.addEventListener('click', hideTextBox);
+
 async function loadData() {
     // Assuming cities.json and polygons.json are available locally
     const citiesResponse = await fetch('static/cities.json');
@@ -17,8 +19,10 @@ async function loadData() {
     
     console.log('Data loaded successfully');
     processAlerts();
-    //await fetchAlerts();
-    //setInterval(fetchAlerts, 1000);
+}
+
+function hideTextBox() {
+    document.getElementById('text-box').style.display = 'none';
 }
 
 async function fetchAlerts() {
@@ -72,7 +76,7 @@ window.onload = async function() {
     await loadData();
 }
 
-function addCityMarker(city) {
+function addCityMarker(city, cityAlerts) {
     if (markersAndPolygons[city.id]) return;
 
     const marker = L.marker([city.lat, city.lng], {
@@ -81,8 +85,18 @@ function addCityMarker(city) {
             iconAnchor: [14, 36],
         })
     });
-    marker.bindPopup('<p style="font-weight: bold; font-size: 15px; margin: auto;">' + city.getLocalizationCityName() + "</p>");
-    marker.addTo(map);
+    /*cityAlerts.forEach(alert => {
+        alertsHtml += `
+            <p>
+                <strong>Date:</strong> ${alert}<br>
+            </p>`;
+    });*/
+    const totalAlerts = cityAlerts.split('<br>').length;
+    marker.bindPopup('<p style="font-weight: bold; font-size: 15px; margin: auto;">' 
+        + city.getLocalizationCityName() + ' (' + totalAlerts + ' alerts)</p> ' 
+        + '<div style="max-height: 150px; overflow-y: auto;">' 
+        + cityAlerts + '</div>');
+        marker.addTo(map);
     markersAndPolygons[city.id] = marker;
 
     const polygon = city.getPolygon();
@@ -108,12 +122,14 @@ function processAlerts() {
         if (!cityAlerts[alert.data]) {
             cityAlerts[alert.data] = [];
         }
-        cityAlerts[alert.data].push(alert.date + ' ' + alert.time);
+        cityAlerts[alert.data].push(alert.date + ' ' + alert.time + ' ' + alert.category_desc);
+
     });
 
-    Object.keys(cityAlerts).forEach(cityName => {
+    Object.keys(cityAlerts).forEach(cityName  => {
         var city = new City(cityName);
         if (city.lat !== 0 && city.lng !== 0) {
+            cityAlerts[cityName] = cityAlerts[cityName].join('<br> ');
             addCityMarker(city, cityAlerts[cityName]);
         }
     });
