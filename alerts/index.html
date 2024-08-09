@@ -39,6 +39,17 @@
             color: #555;
             line-height: 1.4;
         }
+        #close-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgb(225, 81, 81);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -46,6 +57,7 @@
     <div id="text-box" dir="rtl">
         <h1>אזעקות בישראל</h1>
         <p>המפה מראה את כל הערים שהיו בהן התראות מאז ה7 באוקטובר 2023</p>
+        <button id="close-button">X</button>
     </div>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="app.js"></script>
