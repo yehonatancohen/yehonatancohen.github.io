@@ -1,75 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YEHONATAN COHEN</title>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .starfield {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            background: black;
-        }
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background-color: white;
-            border-radius: 50%;
-            animation: moveStar linear infinite;
-        }
-        model-viewer {
-            width: 500px;
-            height: 500px;
-        }
-        @keyframes moveStar {
-            from {
-                transform: translateY(0) translateX(0);
-            }
-            to {
-                transform: translateY(100vh) translateX(100vw);
-            }
-        }
-        @keyframes rotateAstronaut {
-            0% { transform: rotateY(var(--rotate-y)) rotateX(var(--rotate-x)) rotateZ(var(--rotate-z)); }
-            100% { transform: rotateY(calc(var(--rotate-y) + 360deg)) rotateX(calc(var(--rotate-x) + 360deg)) rotateZ(calc(var(--rotate-z) + 360deg)); }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yehonatan Cohen — C++ Team Lead • Portfolio</title>
+  <meta name="description" content="Portfolio of Yehonatan (Michael) Cohen — Modern C++ development team leader in the defense industry. Projects, experience, and contact." />
+  <style>
+    :root{
+      --bg:#000;           /* pure black */
+      --fg:#fff;           /* pure white */
+      --muted:#9a9a9a;     /* mid gray */
+      --soft:#151515;      /* card bg */
+      --line:#1e1e1e;      /* hairline */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.6; letter-spacing:0.2px;
+    }
+    a{color:var(--fg); text-decoration:none; border-bottom:1px solid transparent}
+    a:hover{border-color:var(--fg)}
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(0) blur(6px);
+      background:rgba(0,0,0,.6);
+      border-bottom:1px solid var(--line);
+    }
+    .nav .inner{max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 20px}
+    .brand{font-weight:800; letter-spacing:0.6px}
+    .brand small{color:var(--muted); font-weight:500}
+    .links a{margin-left:18px; opacity:.85}
+    .links a:hover{opacity:1}
+
+    /* Sections */
+    section{scroll-margin-top:70px; padding:72px 20px; border-bottom:1px solid var(--line)}
+    .container{max-width:1100px; margin:0 auto}
+
+    /* Hero */
+    .hero{min-height:78vh; display:grid; align-items:center}
+    .eyebrow{color:var(--muted); text-transform:uppercase; letter-spacing:2px; font-size:12px}
+    h1{font-size:clamp(40px, 6vw, 86px); line-height:1.08; margin:10px 0 12px}
+    .subtitle{font-size:clamp(16px, 2.4vw, 24px); color:#dcdcdc; max-width:850px}
+    .cta{display:flex; gap:14px; margin-top:26px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px; border:1px solid var(--fg); background:transparent; color:var(--fg);
+      border-radius:999px; font-weight:600; letter-spacing:0.3px;
+    }
+    .btn:hover{background:var(--fg); color:var(--bg)}
+    .btn.ghost{border-color:var(--muted); color:var(--muted)}
+    .btn.ghost:hover{border-color:var(--fg); color:var(--bg); background:var(--fg)}
+
+    /* Two-column grids */
+    .grid{display:grid; gap:28px}
+    @media(min-width:900px){
+      .grid.cols-2{grid-template-columns:1.2fr 1fr}
+      .grid.cols-3{grid-template-columns:1fr 1fr 1fr}
+    }
+
+    .card{background:var(--soft); border:1px solid var(--line); padding:22px; border-radius:18px}
+    .card h3{margin:0 0 8px; font-size:22px}
+    .meta{color:var(--muted); font-size:14px}
+
+    /* Lists */
+    .list{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+    .list li{display:flex; justify-content:space-between; align-items:start; gap:10px; border:1px solid var(--line); border-radius:14px; padding:14px 16px; background:#0b0b0b}
+    .list li .left{min-width:0}
+    .list li .right{white-space:nowrap; color:var(--muted)}
+
+    /* Projects (GitHub) */
+    .repos{display:grid; gap:14px}
+    .repo{display:flex; flex-direction:column; gap:6px; border:1px solid var(--line); border-radius:16px; padding:16px; background:#0b0b0b}
+    .repo .top{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .repo .name{font-weight:700; font-size:18px; overflow:hidden; text-overflow:ellipsis}
+    .repo .stats{color:var(--muted); font-size:13px; display:flex; gap:10px}
+    .repo .desc{color:#d0d0d0; font-size:14px}
+
+    .toolbar{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; gap:10px}
+    .toolbar .search{flex:1}
+    .toolbar input{width:100%; background:#0b0b0b; color:var(--fg); border:1px solid var(--line); border-radius:12px; padding:10px 12px}
+    .toolbar .sorts button{background:#0b0b0b; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:8px 12px; cursor:pointer}
+    .toolbar .sorts button.active{color:var(--fg); border-color:var(--fg)}
+
+    /* Footer */
+    footer{padding:34px 20px; color:var(--muted); text-align:center}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease}
+    .reveal.in{opacity:1; transform:none}
+
+    /* Mono caption blocks */
+    code.block{display:inline-block; background:#0b0b0b; border:1px solid var(--line); padding:6px 8px; border-radius:10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; color:#d8d8d8}
+  </style>
 </head>
 <body>
-    <div class="starfield"></div>
-    <model-viewer id="ast" disable-zoom src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
-        alt="AST" 
-        auto-rotate
-        shadow-intensity="1"
-        camera-controls>
-    </model-viewer>
-    <script>
-        const starfield = document.querySelector('.starfield');
-        const stars = 200;
+  <header class="nav">
+    <div class="inner">
+      <div class="brand">Yehonatan Cohen <small>— C++ Team Lead</small></div>
+      <nav class="links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-        for (let i = 0; i < stars; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = `${Math.random() * 100}vw`;
-            star.style.top = `${Math.random() * 100}vh`;
-            star.style.animationDuration = `${Math.random() * 5 + 5}s`;
-            star.style.animationDelay = `${Math.random() * 10}s`;
-            starfield.appendChild(star);
-        }
-    </script>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Modern C++ • Defense Industry • Team Leadership</div>
+        <h1>Building reliable, real‑time systems<br/>with modern C++ and clear engineering.</h1>
+        <p class="subtitle">I'm Yehonatan (Michael) Cohen — a <strong>modern C++ development team leader</strong> in the <strong>defense industry</strong>. I care about robust design, performance, and developer experience. Previously: FIRST robotics champion, B.Sc. CS. I occasionally tinker with automation, security, and bots.</p>
+        <div class="cta">
+          <a class="btn" href="https://github.com/yehonatancohen" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/yehonatan-cohen-7b9416226" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="#projects">See Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container grid cols-2">
+        <div class="card reveal">
+          <h2>About</h2>
+          <p>Hi! I'm a hands-on team lead focused on <strong>modern C++ (C++17/20)</strong>, quality code, and mentoring. I ship high‑reliability software for real‑time systems and enjoy squeezing performance without sacrificing readability. My background includes robotics, cyber projects, and automation side projects.</p>
+          <p class="meta">Inspired by minimalist portfolios like <a href="https://vanholtz.co/" target="_blank" rel="noopener">vanholtz.co</a> — this site stays strictly black &amp; white.</p>
+        </div>
+        <div class="card reveal">
+          <h3>At a glance</h3>
+          <ul class="list">
+            <li><div class="left"><strong>Role</strong><br/><span class="meta">Team Lead • Modern C++ • Defense</span></div><div class="right">Now</div></li>
+            <li><div class="left"><strong>Education</strong><br/><span class="meta">B.Sc. Computer Science — Netanya Academic College</span></div><div class="right">2018–2023</div></li>
+            <li><div class="left"><strong>Robotics</strong><br/><span class="meta">FIRST (FLL/FRC) — national &amp; world champion teams</span></div><div class="right">2017–2022</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container grid cols-2">
+        <div class="card reveal">
+          <h2>Experience</h2>
+          <div class="list">
+            <div class="list-item" style="display:grid; gap:6px">
+              <div><strong>Modern C++ Development Team Lead</strong> — Defense Industry</div>
+              <div class="meta">Designing and delivering real‑time, mission‑critical components. Code reviews, architecture decisions, mentoring, and performance work. Focus: C++17/20, STL, RAII, async, lock‑free patterns where pragmatic, observability, CI/CD.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>Previously &amp; Notables</h3>
+          <ul class="list">
+            <li><div class="left"><strong>FIRST Robotics (FRC 1690 alum)</strong><br/><span class="meta">Control software &amp; competitive strategy</span></div><div class="right">Awards</div></li>
+            <li><div class="left"><strong>Cyber capstone</strong><br/><span class="meta">Ransomware research project (academic)</span></div><div class="right">B.Sc.</div></li>
+            <li><div class="left"><strong>Automation</strong><br/><span class="meta">Discord/Reddit bots, WhatsApp tooling, data scrapers</span></div><div class="right">Side</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container grid cols-2">
+        <div class="card reveal">
+          <h2>Skills</h2>
+          <div class="grid cols-3">
+            <div>
+              <h3>Languages</h3>
+              <p>C++ (17/20), Python, C#, Java, C, JavaScript, PHP</p>
+            </div>
+            <div>
+              <h3>Systems</h3>
+              <p>Realtime, concurrency, networking (OSI), low‑latency IO</p>
+            </div>
+            <div>
+              <h3>Practice</h3>
+              <p>Testing, code quality, threat modeling basics, CTFs</p>
+            </div>
+          </div>
+          <p class="meta">Always strict about RAII, value semantics when possible, and readable performance.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Highlights from the résumé</h3>
+          <ul class="list">
+            <li><div class="left"><strong>Discord bot &amp; Reddit API</strong><br/><span class="meta">Automates fetching and posting content</span></div><div class="right"><a href="https://github.com/search?q=user%3Ayehonatancohen%20discord%20reddit&type=repositories" target="_blank" rel="noopener">GitHub search →</a></div></li>
+            <li><div class="left"><strong>Ransomware study</strong><br/><span class="meta">Academic project: encryption, payment detection, unlock</span></div><div class="right"><a href="https://github.com/search?q=user%3Ayehonatancohen%20ransomware&type=repositories" target="_blank" rel="noopener">GitHub search →</a></div></li>
+            <li><div class="left"><strong>Golan “gold” numbers</strong><br/><span class="meta">Scraper that lists nice purchasable phone numbers</span></div><div class="right"><a href="https://github.com/search?q=user%3Ayehonatancohen%20golan%20numbers&type=repositories" target="_blank" rel="noopener">GitHub search →</a></div></li>
+            <li><div class="left"><strong>WhatsApp tooling</strong><br/><span class="meta">Chrome/automation for group management</span></div><div class="right"><a href="https://github.com/search?q=user%3Ayehonatancohen%20whatsapp&type=repositories" target="_blank" rel="noopener">GitHub search →</a></div></li>
+          </ul>
+          <p class="meta">Full repository list is fetched automatically below.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="toolbar">
+          <h2 style="margin:0">Projects • GitHub Repositories</h2>
+          <div class="search"><input id="search" type="search" placeholder="Filter repositories… (by name or description)" aria-label="Filter repositories" /></div>
+          <div class="sorts" role="group" aria-label="Sort repositories">
+            <button id="sortStars" class="active" type="button">Sort: ★ Stars</button>
+            <button id="sortRecent" type="button">Sort: Recent</button>
+          </div>
+        </div>
+        <div id="repos" class="repos" aria-live="polite">
+          <div class="repo"><div class="top"><div class="name">Loading repositories…</div><div class="stats">Please wait</div></div><div class="desc">If this takes too long, view everything on <a href="https://github.com/yehonatancohen" target="_blank" rel="noopener">github.com/yehonatancohen</a>.</div></div>
+        </div>
+        <p class="meta" style="margin-top:10px">Data via public GitHub API. Forks/archived repositories are hidden by default.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container grid cols-2">
+        <div class="card reveal">
+          <h2>Contact</h2>
+          <p>Open to interesting engineering conversations and collaborations.</p>
+          <ul class="list">
+            <li>
+              <div class="left"><strong>Email</strong><br/><span class="meta">yoncohenyon@gmail.com</span></div>
+              <div class="right"><a href="mailto:yoncohenyon@gmail.com">Send →</a></div>
+            </li>
+            <li>
+              <div class="left"><strong>GitHub</strong><br/><span class="meta">github.com/yehonatancohen</span></div>
+              <div class="right"><a href="https://github.com/yehonatancohen" target="_blank" rel="noopener">Open →</a></div>
+            </li>
+            <li>
+              <div class="left"><strong>LinkedIn</strong><br/><span class="meta">linkedin.com/in/yehonatan-cohen-7b9416226</span></div>
+              <div class="right"><a href="https://www.linkedin.com/in/yehonatan-cohen-7b9416226" target="_blank" rel="noopener">Connect →</a></div>
+            </li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>Colophon</h3>
+          <p>Black &amp; white, single HTML file. Smooth scrolling, scroll‑reveal, and dynamic repo loading — no external libraries.</p>
+          <p><code class="block">design: minimal • color: #000/#fff • type: system-ui</code></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Yehonatan Cohen. Built with love for clean C++ and clean UI.
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      for(const e of entries){ if(e.isIntersecting) e.target.classList.add('in'); }
+    }, {threshold: .14});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // GitHub repos loader
+    const username = 'yehonatancohen';
+    const listEl = document.getElementById('repos');
+    const searchEl = document.getElementById('search');
+    const sortStarsBtn = document.getElementById('sortStars');
+    const sortRecentBtn = document.getElementById('sortRecent');
+    let allRepos = [];
+    let sortMode = 'stars';
+
+    function render(repos){
+      const q = (searchEl.value || '').toLowerCase();
+      const filtered = repos.filter(r => {
+        const hay = (r.name + ' ' + (r.description||'')).toLowerCase();
+        return !q || hay.includes(q);
+      });
+      listEl.innerHTML = '';
+      if(!filtered.length){
+        listEl.innerHTML = '<div class="repo"><div class="top"><div class="name">No repositories match your filter.</div></div><div class="desc">Try clearing the search box.</div></div>';
+        return;
+      }
+      for(const r of filtered){
+        const a = document.createElement('article');
+        a.className = 'repo';
+        const lang = r.language ? r.language : '—';
+        const updated = new Date(r.pushed_at).toISOString().slice(0,10);
+        a.innerHTML = `
+          <div class="top">
+            <div class="name"><a href="${r.html_url}" target="_blank" rel="noopener">${r.name}</a></div>
+            <div class="stats">
+              <span title="Stars">★ ${r.stargazers_count}</span>
+              <span title="Language">${lang}</span>
+              <span title="Last push">${updated}</span>
+            </div>
+          </div>
+          <div class="desc">${r.description ? r.description.replace(/</g,'&lt;') : '<span class="meta">No description</span>'}</div>
+        `;
+        listEl.appendChild(a);
+      }
+    }
+
+    function sortRepos(){
+      const repos = [...allRepos];
+      if(sortMode === 'stars'){
+        repos.sort((a,b)=> (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)));
+      } else {
+        repos.sort((a,b)=> new Date(b.pushed_at) - new Date(a.pushed_at));
+      }
+      render(repos);
+    }
+
+    function setSort(mode){
+      sortMode = mode;
+      sortStarsBtn.classList.toggle('active', mode==='stars');
+      sortRecentBtn.classList.toggle('active', mode==='recent');
+      sortRepos();
+    }
+
+    sortStarsBtn.addEventListener('click', ()=>setSort('stars'));
+    sortRecentBtn.addEventListener('click', ()=>setSort('recent'));
+    searchEl.addEventListener('input', sortRepos);
+
+    (async function loadRepos(){
+      try{
+        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error(data && data.message || 'Unexpected');
+        allRepos = data.filter(r => !r.fork && !r.archived);
+        sortRepos();
+      }catch(err){
+        console.error(err);
+        listEl.innerHTML = `
+          <div class="repo">
+            <div class="top"><div class="name">Could not load repositories</div></div>
+            <div class="desc">See all projects on <a href="https://github.com/${username}" target="_blank" rel="noopener">github.com/${username}</a>.</div>
+          </div>`;
+      }
+    })();
+  </script>
 </body>
 </html>
