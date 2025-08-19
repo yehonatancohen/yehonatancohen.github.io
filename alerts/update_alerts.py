@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 # Define initial parameters
 url = 'https://alerts-history.oref.org.il//Shared/Ajax/GetAlarmsHistory.aspx'
-from_date = '07.10.2023 00:00:00'
+from_date = '15.09.2024 00:00:00'
 to_date = datetime.now().strftime('%d.%m.%Y %H:%M:%S')
 mode = '0'
 
@@ -59,7 +59,10 @@ while True:
     # Get the date and time of the last alert and set it as the new to_date
     last_alert_datetime = alerts[-1]['alertDate']  # Adjust based on the actual structure of the response
     last_alert_datetime = datetime.strptime(last_alert_datetime, '%Y-%m-%dT%H:%M:%S')
-    to_date = (last_alert_datetime - timedelta(seconds=1)).strftime('%d.%m.%Y %H:%M:%S')
+    if (datetime.strptime(to_date, '%d.%m.%Y %H:%M:%S').date() == last_alert_datetime.date()):
+        to_date = (last_alert_datetime - timedelta(days=1)).strftime('%d.%m.%Y %H:%M:%S')
+    else:
+        to_date = (last_alert_datetime - timedelta(seconds=1)).strftime('%d.%m.%Y %H:%M:%S')
     print(f"Fetched {len(alerts)} alerts, last alert at {to_date}")
     
     # Break if the number of alerts is less than 2000, indicating there are no more alerts
