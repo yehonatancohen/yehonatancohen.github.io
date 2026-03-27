@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 # Define initial parameters
 url = 'https://alerts-history.oref.org.il//Shared/Ajax/GetAlarmsHistory.aspx'
-from_date = '07.10.2023 00:00:00'
+from_date = '15.09.2024 00:00:00'
 to_date = datetime.now().strftime('%d.%m.%Y %H:%M:%S')
 mode = '0'
 
