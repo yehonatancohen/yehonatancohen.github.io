@@ -1,0 +1,484 @@
+[
+    {
+        "time": 1621533637,
+        "cities": [
+            "מפלסים",
+            "מטווח ניר עם",
+            "ניר עם",
+            "שדרות, איבים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533644,
+        "cities": [
+            "זרועה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533647,
+        "cities": [
+            "יכיני",
+            "כפר עזה",
+            "סעד",
+            "תקומה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533649,
+        "cities": [
+            "גבים, מכללת ספיר"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533666,
+        "cities": [
+            "ארז"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533685,
+        "cities": [
+            "בארי",
+            "זמרת, שובה",
+            "כפר מימון ותושיה",
+            "עלומים",
+            "שוקדה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533686,
+        "cities": [
+            "נתיבות"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533691,
+        "cities": [
+            "חוות שיקמים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533714,
+        "cities": [
+            "אזור תעשייה הדרומי אשקלון",
+            "זיקים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533739,
+        "cities": [
+            "ניצן",
+            "ניצנים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533747,
+        "cities": [
+            "אזור תעשייה צפוני אשקלון",
+            "אשקלון - צפון",
+            "אשקלון - דרום",
+            "באר גנים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621533751,
+        "cities": [
+            "אשדוד - א,ב,ד,ה",
+            "אשדוד - איזור תעשייה צפוני",
+            "אשדוד -יא,יב,טו,יז,מרינה,סיט"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621539774,
+        "cities": [
+            "נתיב העשרה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621539826,
+        "cities": [
+            "ארז",
+            "יד מרדכי"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621539841,
+        "cities": [
+            "נתיב העשרה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621539865,
+        "cities": [
+            "נתיב העשרה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621540412,
+        "cities": [
+            "יד מרדכי",
+            "נתיב העשרה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621543783,
+        "cities": [
+            "חולית",
+            "כרם שלום",
+            "סופה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621543792,
+        "cities": [
+            "אבשלום",
+            "יבול",
+            "יתד",
+            "שדי אברהם"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621543808,
+        "cities": [
+            "דקל"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621546070,
+        "cities": [
+            "בארי"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621546076,
+        "cities": [
+            "נחל עוז",
+            "עלומים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621546082,
+        "cities": [
+            "זמרת, שובה",
+            "כפר עזה",
+            "סעד"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621546098,
+        "cities": [
+            "שוקדה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621546437,
+        "cities": [
+            "נירים",
+            "עין השלושה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621546637,
+        "cities": [
+            "נתיב העשרה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621548760,
+        "cities": [
+            "כפר עזה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549739,
+        "cities": [
+            "ניר עוז"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549745,
+        "cities": [
+            "נירים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549818,
+        "cities": [
+            "מגן",
+            "ניר עוז",
+            "נירים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549880,
+        "cities": [
+            "כרם שלום"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549881,
+        "cities": [
+            "חולית"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549892,
+        "cities": [
+            "יבול"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549893,
+        "cities": [
+            "יתד",
+            "סופה",
+            "שדי אברהם"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549901,
+        "cities": [
+            "תלמי יוסף"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549918,
+        "cities": [
+            "גבולות"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549936,
+        "cities": [
+            "תלמי אליהו"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621549941,
+        "cities": [
+            "צוחר, אוהד"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621550062,
+        "cities": [
+            "סופה",
+            "פרי גן"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621550977,
+        "cities": [
+            "כיסופים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1621550986,
+        "cities": [
+            "מבטחים, עמיעוז, ישע",
+            "צוחר, אוהד"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1623964657,
+        "cities": [
+            "כפר עזה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1626742473,
+        "cities": [
+            "עבדון"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1626742474,
+        "cities": [
+            "ראש הנקרה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1626742476,
+        "cities": [
+            "נתיב השיירה",
+            "שייח' דנון",
+            "חניתה",
+            "יערה",
+            "כברי",
+            "מצובה"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1626742484,
+        "cities": [
+            "אדמית",
+            "שלומי"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1628068550,
+        "cities": [
+            "כפר גלעדי",
+            "קריית שמונה",
+            "תל חי"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1628236495,
+        "cities": [
+            "עין קנייא"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1628236496,
+        "cities": [
+            "נווה אטי''ב"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1628236496,
+        "cities": [
+            "שניר"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1629109921,
+        "cities": [
+            "ארז",
+            "מטווח ניר עם",
+            "ניר עם",
+            "שדרות, איבים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1631303466,
+        "cities": [
+            "שלומית"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1631303466,
+        "cities": [
+            "אבשלום",
+            "יבול"
+        ],
+        "threat": 0,
+        "isDrill": false
+    },
+    {
+        "time": 1631383231,
+        "cities": [
+            "גבים, מכללת ספיר",
+            "מטווח ניר עם",
+            "מפלסים",
+            "ניר עם",
+            "שדרות, איבים"
+        ],
+        "threat": 0,
+        "isDrill": false
+    }
+]
